@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hbase.rootdir</name>
+        <value>hdfs://{{ hadoop_hdfs_master_host }}:{{ hbase_hdfs_port }}{{ hbase_hdfs_dir }}</value>
+    </property>
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+	<value>
+{%- if hbase_zookeeper_quorum is iterable and hbase_zookeeper_quorum is not string -%}
+{%- set comma = joiner(",") -%}
+{%- for zk_host in hbase_zookeeper_quorum -%}
+{{- comma() }}{{ zk_host }}
+{%- endfor -%}
+{%- elif hbase_zookeeper_quorum is string -%}
+{{ hbase_zookeeper_quorum }}
+{%- endif -%}
+	</value>
+    </property>
+{% if hbase_master_host is defined and hbase_master_host %}
+    <property>
+        <name>hbase.zookeeper.property.dataDir</name>
+        <value>{{ hbase_zookeeper_data_dir }}</value>
+    </property>
+{% endif %}
+</configuration>

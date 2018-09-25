@@ -1,0 +1,23 @@
+---
+
+- name: restart hbase-zookeeper
+  service:
+    name: hbase-zookeeper
+    state: restarted
+  when: hbase_zookeeper is defined and hbase_zookeeper
+
+- name: restart hbase-master
+  service:
+    name: hbase-master
+    state: restarted
+  when: hbase_master is defined and hbase_master
+
+- name: restart hbase-regionserver
+  service:
+    name: hbase-regionserver
+    state: restarted
+  when: hbase_regionserver is defined and hbase_regionserver
+
+- name: reload systemd
+  systemd:
+    daemon_reload: yes
