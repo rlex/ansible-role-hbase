@@ -7,3 +7,4 @@ hbase_hdfs_port: 8020
 hbase_zookeeper_data_dir: /var/lib/zookeeper
 hbase_master_host: localhost
 hbase_zookeeper_quorum: {}
+hbase_unsafe_stream_capability_enforce: true

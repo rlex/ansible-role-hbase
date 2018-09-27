@@ -28,4 +28,10 @@
         <value>{{ hbase_zookeeper_data_dir }}</value>
     </property>
 {% endif %}
+{% if hbase_unsafe_stream_capability_enforce == false %}
+    <property>
+        <name>hbase.unsafe.stream.capability.enforce</name>
+        <value>false</value>
+    </property>
+{% endif %}
 </configuration>
