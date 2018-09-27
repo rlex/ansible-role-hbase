@@ -1,0 +1,15 @@
+---
+
+- name: create hbase thrift systemd service file
+  template:
+    src: systemd/hbase-thrift2.service.j2
+    dest: /etc/systemd/system/hbase-thrift2.service
+  notify:
+  - reload systemd
+  - restart hbase-thrift2
+
+- name: start hbase thrift
+  service:
+    name: hbase-thrift2
+    state: started
+    enabled: yes

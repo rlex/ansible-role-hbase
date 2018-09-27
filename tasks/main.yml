@@ -75,5 +75,8 @@
 - include_tasks: thrift.yml
   when: hbase_thrift is defined and hbase_thrift
 
+- include_tasks: thrift2.yml
+  when: hbase_thrift2 is defined and hbase_thrift2
+
 - include_tasks: rest.yml
   when: hbase_rest is defined and hbase_rest
