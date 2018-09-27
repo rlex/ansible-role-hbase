@@ -6,6 +6,7 @@ hbase_log_dir: /var/log/hbase
 
 # hdfs directory where to store hbase data
 hbase_hdfs_dir: /hbase
+hbase_hdfs_port: 8020
 
 hbase_hdfs_port: 9820
 # local directory where to store zookeeper data
