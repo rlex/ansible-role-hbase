@@ -18,6 +18,24 @@
     state: restarted
   when: hbase_regionserver is defined and hbase_regionserver
 
+- name: restart hbase-thrift
+  service:
+    name: hbase-thrift
+    state: restarted
+  when: hbase_thrift is defined and hbase_thrift
+
+- name: restart hbase-thrift2
+  service:
+    name: hbase-thrift2
+    state: restarted
+  when: hbase_thrift2 is defined and hbase_thrift2
+
+- name: restart hbase-rest
+  service:
+    name: hbase-rest
+    state: restarted
+  when: hbase_rest is defined and hbase_rest
+
 - name: reload systemd
   systemd:
     daemon_reload: yes
